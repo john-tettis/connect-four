@@ -76,6 +76,10 @@ function findSpotForCol(x) {
 
 function placeInTable(y, x) {
   // TODO: make a div and insert into correct table cell
+
+  const dropDistance =calculateDropDistance(y+1);
+  let speed = dropDistance/280;
+
   const piece = document.createElement('div');
   piece.classList.add(`piece`,`p${currPlayer}`);
 
@@ -83,6 +87,14 @@ function placeInTable(y, x) {
   console.log(`${y}-${x}`,location);
   location.appendChild(piece);
 
+  piece.style.transform = `translate(0px,-${dropDistance}px)`;
+  piece.style.transition=`transform ${speed}s ease-in`
+
+  setTimeout(()=>{
+  piece.style.transform = `translate(0px,0px)`
+    piece.style.position='relative';
+},40)
+  
 }
 
 /** endGame: announce game end */
@@ -96,7 +108,7 @@ function endGame(msg) {
 
   restartBtn.classList.add('restart');
   restartBtn.innerText='Restart Game'
- // restartBtn.addEventListener('click',restartGame)
+  restartBtn.addEventListener('click',restartGame);
 
   p.innerText=msg;
 
@@ -145,6 +157,54 @@ function handleClick(evt) {
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
 
 function checkForWin() {
+  function _win(cells) {
+    // Check four cells to see if they're all color of current player
+    //  - cells: list of four (y, x) cells
+    //  - returns true if all are legal coordinates & all match currPlayer
+
+    return cells.every(
+      ([y, x]) =>
+        y >= 0 &&
+        y < HEIGHT &&
+        x >= 0 &&
+        x < WIDTH &&
+        board[y][x] === currPlayer
+    );
+  }
+
+  // TODO: read and understand this code. Add comments to help you.
+
+  for (var y = 0; y < HEIGHT; y++) {
+    for (var x = 0; x < WIDTH; x++) {
+      var horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
+      var vert = [[y, x], [y + 1, x], [y + 2, x], [y + 3, x]];
+      var diagDR = [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]];
+      var diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
+
+      if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
+        return true;
+      }
+    }
+  }
+}
+function calculateDropDistance(cell){
+  const cellDist = 58.14;
+  return cellDist*cell
+}
+const restartGame=()=>{
+  const pieces = document.querySelectorAll('.piece');
+  for(let piece of pieces){
+    piece.remove();
+  }
+  document.querySelector('.message').remove();
+  board=[];
+  makeBoard(WIDTH, HEIGHT, board);
+
+}
+function botTurn(){
+
+}
+function closeWin() {
   function _win(cells) {
     // Check four cells to see if they're all color of current player
     //  - cells: list of four (y, x) cells

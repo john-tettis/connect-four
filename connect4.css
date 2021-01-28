@@ -28,7 +28,7 @@ body{
   border-radius: 50%;
 }
 .to-be-dropped{
-  transition: bottom 2s;
+  transition: transform 2s;
 }
 
 
