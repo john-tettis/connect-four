@@ -38,14 +38,21 @@ function _nextMove(){
         console.log('team enemy 2')
         let potential = moveTeam.filter((pos)=>moveEnemy.includes(pos));
         console.log(potential);
-    if(potential.length==0){
-        let x=moveTeam[Math.floor(Math.random()*(moveTeam.length+1))]
-        return [findSpotForCol(x),x];     
-    }
-    else{
-        let x=potential[Math.floor(Math.random()*(potential.length+1))]
-        return [findSpotForCol(x),x];
-    }
+        if(potential.length==0){
+            if(moveTeam.length>1){
+                let x=moveTeam[Math.floor(Math.random()*(moveTeam.length+1))]
+                return [findSpotForCol(x),x];  
+            }
+            else{
+                let x=moveTeam[0];
+                return [findSpotForCol(x),x]; 
+            }
+               
+        }
+        else{
+            let x=potential[Math.floor(Math.random()*(potential.length+1))]
+            return [findSpotForCol(x),x];
+        }
 
     }
     if(team2){
