@@ -64,7 +64,7 @@ h1{
 
   /* pieces are div within game table cells: draw as colored circles */
 
-.piece {
+.piece{
     /* TODO: make into circles */
     display:block;
     margin: auto;
@@ -269,6 +269,9 @@ a{
     color:$primary-color;
 }
 @media only screen and (max-device-width: 500px){
+    body{
+        background-color:red;
+    }
     #board{
         min-width:720px;
         td {

@@ -331,6 +331,9 @@ a {
 }
 
 @media only screen and (max-device-width: 500px) {
+  body {
+    background-color: red;
+  }
   #board {
     min-width: 720px;
   }
