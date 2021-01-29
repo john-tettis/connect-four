@@ -1,100 +1,139 @@
-/* game board table */
-body{
-  width: 100vw;
+body {
   height: 100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  margin:0;
-  background-color:#e0dcff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0;
 }
+
+/* game board table */
+#board {
+  height: 419.2px;
+  width: 433.3px;
+  border: 3px solid #E7CC92;
+  border-radius: 5px;
+  background-color: #E79692;
+  -webkit-box-shadow: 4px 4px 10px #233045;
+          box-shadow: 4px 4px 10px #233045;
+  display: inline-block;
+}
+
 #board td {
   width: 50px;
   height: 50px;
-  border: solid 3px #1F1959;
+  border: solid 3px #40787E;
+  border-radius: 50%;
   text-align: center;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: transparent;
+}
+
+#game {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 /* pieces are div within game table cells: draw as colored circles */
-
 .piece {
   /* TODO: make into circles */
-  display:block;
+  display: block;
   margin: auto;
-  width: 49.5px;
-  height: 49.5px;
+  width: 49.2px;
+  height: 49.2px;
   border-radius: 50%;
 }
-.to-be-dropped{
-  transition: transform 2s;
+
+.p1 {
+  background-color: red;
+  background-image: url(../Images/redPiece.png);
+  background-size: cover;
 }
 
-
-
-
-.p1{
-  background-color:red;
-}
-.p2{
-  background-color:blue;
+.p2 {
+  background-color: blue;
+  background-image: url(../Images/bluePiece.png);
+  background-size: cover;
+  background-position: 10% 10%;
 }
 
 /* column-top is table row of clickable areas for each column */
-table{
-  border:3px solid #0D083B;
-}
-
 #column-top td {
-  border: dashed 1px lightgray;
+  border: dashed 2px #E7CC92;
 }
 
 #column-top td:hover {
-  background-color: gold;
+  border: 2px solid #E7CC92;
+  border-radius: 50%;
 }
 
 /*message pops up in the middle of the game */
-#game{
-  position:relative;
-  background-color:#FFDEAA;
-}
-.message{
-  
-  width:70%;
-  height:50%;
-  margin:0;
-  background-color:#837EB1;
-  border: 3px solid #393276;
+.message {
+  width: 70%;
+  height: 50%;
+  margin: 0;
+  background-color: #e8eaec;
+  border: 1px solid #233045;
   border-radius: 5px;
-  display:flex;
-  flex-direction: column;
-  justify-content:center;
-  align-items:center;
-  box-shadow: 2px 2px 10px 3px #352f27;
-
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 2px 2px 10px 3px #352f27;
+          box-shadow: 2px 2px 10px 3px #352f27;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
+
 /*button*/
-
-.restart{
-  width:100px;
-  height:30px;
-  background-color:#1F1959;
+.restart {
+  width: 100px;
+  height: 30px;
+  background-color: #40787E;
   border: solid 3px #0D083B;
-  border-radius:10px;
-  color:#FFFAAA;
+  border-radius: 10px;
+  color: #FFFAAA;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 2px 2px 2px #46407a;
+          box-shadow: 2px 2px 2px #46407a;
+}
 
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  box-shadow: 2px 2px 2px #46407a;
-}
-.restart:hover{
-  background-color:#938be0;
+.restart:hover {
   border: 1px solid #1F1959;
-  margin-top:4px;
+  margin-top: 4px;
 }
+/*# sourceMappingURL=connect4.css.map */

@@ -1,0 +1,114 @@
+$primary-color: #40787E;
+$secondary-color: #E79692;
+$thirdary-color:#E7CC92;
+$black:#021129;
+$dark-grey:#233045;
+$light-grey:#e8eaec;
+
+
+body{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0;  
+}
+/* game board table */
+
+#board{
+    height:419.2px;
+    width:433.3px;
+    border:3px solid $thirdary-color;
+    border-radius:5px;
+    background-color: $secondary-color;
+    box-shadow: 4px 4px 10px $dark-grey;
+    display: inline-block;
+    td {
+        width: 50px;
+        height: 50px;
+        border: solid 3px $primary-color;
+        border-radius: 50%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        background:transparent;
+    }
+} 
+#game{
+    display:flex;
+    justify-content: center;
+}
+
+  /* pieces are div within game table cells: draw as colored circles */
+
+.piece {
+    /* TODO: make into circles */
+    display:block;
+    margin: auto;
+    width: 49.2px;
+    height: 49.2px;
+    border-radius: 50%;
+}
+
+.p1{
+    background-color:red;
+    background-image: url(../Images/redPiece.png);
+    background-size: cover;
+}
+.p2{
+    background-color:blue;
+    background-image: url(../Images/bluePiece.png);
+    background-size: cover;
+    background-position:10% 10%;
+}
+
+  /* column-top is table row of clickable areas for each column */
+#column-top{
+td {
+    border: dashed 2px $thirdary-color;
+    &:hover {
+        border: 2px solid $thirdary-color;  
+        border-radius:50%;
+    }
+}
+}
+
+  /*message pops up in the middle of the game */
+.message{
+    
+    width:70%;
+    height:50%;
+    margin:0;
+    background-color:$light-grey;
+    border: 1px solid $dark-grey;
+    border-radius: 5px;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    box-shadow: 2px 2px 10px 3px #352f27;
+
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+/*button*/
+
+.restart{
+    width:100px;
+    height:30px;
+    background-color:$primary-color;
+    border: solid 3px #0D083B;
+    border-radius:10px;
+    color:#FFFAAA;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow: 2px 2px 2px #46407a;
+    &:hover{
+        border: 1px solid #1F1959;
+        margin-top:4px;
+    }
+}

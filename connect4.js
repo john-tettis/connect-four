@@ -38,6 +38,9 @@ function makeHtmlBoard() {
   //creates the top area of the board and loops to create each cell in it
   const top = document.createElement("tr");
   top.setAttribute("id", "column-top");
+  
+  top.addEventListener('mouseover',topRowSetColor);
+  top.addEventListener('mouseout',topRowResetColor);
   top.addEventListener("click", handleClick);
 
   for (let x = 0; x < WIDTH; x++) {
@@ -58,7 +61,6 @@ function makeHtmlBoard() {
     htmlBoard.append(row);
   }
 }
-
 /** findSpotForCol: given column x, return top empty y (null if filled) */
 
 function findSpotForCol(x) {
@@ -200,6 +202,13 @@ const restartGame=()=>{
   board=[];
   makeBoard(WIDTH, HEIGHT, board);
 
+}
+//function that changes the top row color to the color of the current player
+const topRowSetColor=(e)=>{
+  e.target.style.backgroundColor =currPlayer===1 ? 'red':'blue';
+}
+const topRowResetColor=(e)=>{
+  e.target.style.backgroundColor ='#E79692';
 }
 function botTurn(){
 
