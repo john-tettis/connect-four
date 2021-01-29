@@ -7,6 +7,8 @@
 
 const WIDTH = 7;
 const HEIGHT = 6;
+let turn =0;
+let lastMove=[];
 
 let currPlayer = 1; // active player: 1 or 2
 let inactivePlayer =2;
@@ -78,6 +80,9 @@ function findSpotForCol(x) {
 
 function placeInTable(y, x) {
   // TODO: make a div and insert into correct table cell
+  board[y].splice(x,1,currPlayer);
+  turn++;
+  lastMove=[y,x];
 
   const dropDistance =calculateDropDistance(y+1);
   let speed = dropDistance/280;
@@ -86,7 +91,6 @@ function placeInTable(y, x) {
   piece.classList.add(`piece`,`p${currPlayer}`);
 
   const location= document.getElementById(`${y}-${x}`);
-  console.log(`${y}-${x}`,location);
   location.appendChild(piece);
 
   piece.style.transform = `translate(0px,-${dropDistance}px)`;
@@ -119,7 +123,6 @@ function endGame(msg) {
   message.appendChild(restartBtn)
   
   board.appendChild(message);
-  console.log(msg);
 }
 
 /** handleClick: handle click of column top to play piece */
@@ -137,8 +140,7 @@ function handleClick(evt) {
 
   // place piece in board and add to HTML table
   placeInTable(y, x);
-  board[y].splice(x,1,currPlayer);
-  console.table(board);
+ 
   
 
   
@@ -147,13 +149,17 @@ function handleClick(evt) {
   if (checkForWin()) {
     return endGame(`Player ${currPlayer} won!`);
   }
-  [currPlayer, inactivePlayer]=[inactivePlayer,currPlayer];
-
+ 
   // check for tie
-  // TODO: check if all cells in board are filled; if so call, call endGame
+  if(board.every((spc)=>spc===null)){
+    return endGame(`its a tie!`);
+  }
 
   // switch players
-  // TODO: switch currPlayer 1 <-> 2
+  [currPlayer, inactivePlayer]=[inactivePlayer,currPlayer];
+  botTurn(lastMove);
+
+
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
@@ -176,12 +182,12 @@ function checkForWin() {
 
   // TODO: read and understand this code. Add comments to help you.
 
-  for (var y = 0; y < HEIGHT; y++) {
-    for (var x = 0; x < WIDTH; x++) {
-      var horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
-      var vert = [[y, x], [y + 1, x], [y + 2, x], [y + 3, x]];
-      var diagDR = [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]];
-      var diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
+  for (let y = 0; y < HEIGHT; y++) {
+    for (let x = 0; x < WIDTH; x++) {
+      const horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
+      const vert = [[y, x], [y + 1, x], [y + 2, x], [y + 3, x]];
+      const diagDR = [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]];
+      const diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
 
       if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
         return true;
@@ -189,10 +195,12 @@ function checkForWin() {
     }
   }
 }
+//calulate the distance from the top to the open space for location and speed calculation
 function calculateDropDistance(cell){
   const cellDist = 58.14;
   return cellDist*cell
 }
+//restart the game by clearing pieces and resetting counters and the board
 const restartGame=()=>{
   const pieces = document.querySelectorAll('.piece');
   for(let piece of pieces){
@@ -201,8 +209,10 @@ const restartGame=()=>{
   document.querySelector('.message').remove();
   board=[];
   makeBoard(WIDTH, HEIGHT, board);
+  turn=0;
 
 }
+
 //function that changes the top row color to the color of the current player
 const topRowSetColor=(e)=>{
   e.target.style.backgroundColor =currPlayer===1 ? 'red':'blue';
@@ -210,40 +220,14 @@ const topRowSetColor=(e)=>{
 const topRowResetColor=(e)=>{
   e.target.style.backgroundColor ='#E79692';
 }
-function botTurn(){
 
+
+function otherMove(){
+  const [avSpots, enemy]=gameData('p1');
+  
 }
-function closeWin() {
-  function _win(cells) {
-    // Check four cells to see if they're all color of current player
-    //  - cells: list of four (y, x) cells
-    //  - returns true if all are legal coordinates & all match currPlayer
 
-    return cells.every(
-      ([y, x]) =>
-        y >= 0 &&
-        y < HEIGHT &&
-        x >= 0 &&
-        x < WIDTH &&
-        board[y][x] === currPlayer
-    );
-  }
 
-  // TODO: read and understand this code. Add comments to help you.
-
-  for (var y = 0; y < HEIGHT; y++) {
-    for (var x = 0; x < WIDTH; x++) {
-      var horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
-      var vert = [[y, x], [y + 1, x], [y + 2, x], [y + 3, x]];
-      var diagDR = [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]];
-      var diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
-
-      if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
-        return true;
-      }
-    }
-  }
-}
 function handleIcon(){
   
   const icon =document.querySelector('.icon');
