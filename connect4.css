@@ -100,12 +100,12 @@ h1 {
 
 .p1 {
   background-color: red;
-  background-image: url(./Images/redPiece.png);
+  background-image: url(/Images/redPiece.png);
 }
 
 .p2 {
   background-color: blue;
-  background-image: url(./Images/bluePiece.png);
+  background-image: url(/Images/bluePiece.png);
   background-position: 10% 10%;
 }
 
@@ -337,6 +337,10 @@ a {
   #board td {
     width: 100px;
     height: 100px;
+  }
+  .piece {
+    width: 97px;
+    height: 97px;
   }
 }
 /*# sourceMappingURL=connect4.css.map */
