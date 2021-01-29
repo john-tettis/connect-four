@@ -244,6 +244,29 @@ function closeWin() {
     }
   }
 }
+function handleIcon(){
+  
+  const icon =document.querySelector('.icon');
+  if(icon.childElementCount===0){
+    const bubble = document.createElement('div');
+  const p = document.createElement('p');
+  
+  bubble.style.backGroundImage = 'url(../Images/speechBubble)';
+  bubble.classList.add('speech-bubble')
+  p.innerHTML='I was given 6-10 hours to do this project. I decided to dedicate 3-4 hours on making a bot to play you back. Using only javascript. It will not beat you (a little connect-four ego boost for ya!)'
+  bubble.appendChild(p);
+  icon.appendChild(bubble);
+  icon.addEventListener('mouseleave',()=>{
+    document.querySelector('.speech-bubble').remove();
+  })
+
+  }
+  
+}
+const icon =document.querySelector('.icon');
+icon.addEventListener('mousemove',handleIcon);
+
 
 makeBoard(WIDTH, HEIGHT, board);
 makeHtmlBoard();
+
