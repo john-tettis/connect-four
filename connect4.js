@@ -105,7 +105,7 @@ function endGame(msg) {
   // TODO: pop up alert message
   const message = document.createElement('div');
   const p = document.createElement('p')
-  const board = document.getElementById('game');
+  const board = document.getElementById('board');
   const restartBtn=document.createElement('btn');
 
   restartBtn.classList.add('restart');

@@ -5,7 +5,20 @@
 </head>
 <body>
   <div id="game">
-    <table id="board"></table>
+    <h1>Connect Four!</h1>
+    <div class="container">
+      <table id="board"></table>
+      <form class="form">
+        <h2>Players:</h2>
+        <div class="switch-field">
+          <input type="radio" id="radio-one" name="switch-one" value="yes" checked/>
+          <label for="radio-one">One </label>
+          <input type="radio" id="radio-two" name="switch-one" value="no" />
+          <label for="radio-two">Two</label>
+          <span class="icon">&#128712</span>
+        </div>
+      </form>
+    </div>
   </div>
 
   <script src="connect4.js"></script>
