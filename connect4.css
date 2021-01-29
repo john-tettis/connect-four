@@ -329,4 +329,14 @@ footer div p {
 a {
   color: #3278b9;
 }
+
+@media only screen and (max-device-width: 500px) {
+  #board {
+    min-width: 720px;
+  }
+  #board td {
+    width: 100px;
+    height: 100px;
+  }
+}
 /*# sourceMappingURL=connect4.css.map */
