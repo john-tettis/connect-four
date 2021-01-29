@@ -157,7 +157,7 @@ function handleClick(evt) {
 
   // switch players
   [currPlayer, inactivePlayer]=[inactivePlayer,currPlayer];
-  botTurn(lastMove);
+  if(toggleBot()){botTurn(lastMove)}
 
 
 }
@@ -220,13 +220,6 @@ const topRowSetColor=(e)=>{
 const topRowResetColor=(e)=>{
   e.target.style.backgroundColor ='#E79692';
 }
-
-
-function otherMove(){
-  const [avSpots, enemy]=gameData('p1');
-  
-}
-
 
 function handleIcon(){
   

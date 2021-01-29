@@ -1,46 +1,60 @@
-$primary-color: #40787E;
+$primary-color: #3278b9;
 $secondary-color: #E79692;
 $thirdary-color:#E7CC92;
 $black:#021129;
 $dark-grey:#233045;
 $light-grey:#e8eaec;
+$piece-size: 49.4px;
 
 
 body{
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
     margin:0;  
     font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+}
+#content{
+    height:100vh;
+    width:100%;
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
 }
 /* game board table */
-
+h1{
+    width:300px;
+    text-align:center;
+}
 #board{
-    
-    background-color: $secondary-color;
+    min-width: 421px;
+    padding:5px;
     td {
         width: 50px;
         height: 50px;
+        padding:0;
         border: solid 3px $primary-color;
         border-radius: 50%;
         text-align: center;
         justify-content: center;
         align-items: center;
-        background:transparent;
+        overflow:visible;
     }
 } 
 .container{
     background-color:$secondary-color;
-    display:flex;
-    flex-direction: column;
     border:3px solid $thirdary-color;
-    border-radius:5px 5px 10px 10px; 
+    border-radius:20px; 
 
     box-shadow: 4px 4px 10px $dark-grey;
 }
 #game{
     display:flex;
+    width: 41px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -53,20 +67,21 @@ body{
     /* TODO: make into circles */
     display:block;
     margin: auto;
-    width: 49.2px;
-    height: 49.2px;
+    width: $piece-size;
+    height: $piece-size;
     border-radius: 50%;
+    background-size: cover;
 }
 
 .p1{
     background-color:red;
     background-image: url(../Images/redPiece.png);
-    background-size: cover;
+   
 }
 .p2{
     background-color:blue;
     background-image: url(../Images/bluePiece.png);
-    background-size: cover;
+    
     background-position:10% 10%;
 }
 
@@ -74,6 +89,9 @@ body{
 #column-top{
 td {
     border: dashed 2px $thirdary-color;
+    width:$piece-size;
+    height:$piece-size;
+    overflow:hidden;
     &:hover {
         border: 2px solid $thirdary-color;  
         border-radius:50%;
@@ -174,7 +192,7 @@ td {
 .form {
     background-color:$secondary-color;
     width: 100%;
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 20px 20px;
 	font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
 	font-weight: normal;
     line-height: 1.625;
@@ -201,6 +219,7 @@ h2 {
     }
 }
 .speech-bubble{
+    z-index:3;
     position:absolute;
     width:200px;
     transform: translate(23px, -85px);
@@ -224,3 +243,28 @@ h2 {
 
 }
 
+//footer
+
+footer{
+    z-index: -1;
+    width:100%;
+    height:100px;
+    background-color: $black;
+    position:relative;
+    bottom:0px;
+    margin:0;
+    display:flex;
+    justify-content: center;
+    div{
+        width:20rem;
+        p{
+            color:white;
+            text-align: center;
+        }
+    }
+    
+}
+
+a{
+    color:$primary-color;
+}

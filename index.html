@@ -4,22 +4,30 @@
   <link href="connect4.css" rel="stylesheet">
 </head>
 <body>
-  <div id="game">
-    <h1>Connect Four!</h1>
-    <div class="container">
-      <table id="board"></table>
-      <form class="form">
-        <h2>Players:</h2>
-        <div class="switch-field">
-          <input type="radio" id="radio-one" name="switch-one" value="yes" checked/>
-          <label for="radio-one">One </label>
-          <input type="radio" id="radio-two" name="switch-one" value="no" />
-          <label for="radio-two">Two</label>
-          <span class="icon">&#128712</span>
-        </div>
-      </form>
+  <section id="content" >
+    <div id="game">
+      <h1>Connect Four!</h1>
+      <div class="container">
+        <table id="board"></table>
+        <form class="form">
+          <h2>Players:</h2>
+          <div class="switch-field">
+            <input type="radio" id="radio-one" name="switch-one" value="yes" checked/>
+            <label for="radio-one">One </label>
+            <input type="radio" id="radio-two" name="switch-one" value="no" />
+            <label for="radio-two">Two</label>
+            <span class="icon">&#128712</span>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
+  </section>
+  
+  <footer>
+    <div class="footer">
+      <p>This fun demonstration was done by <a href="https://www.linkedin.com/in/john-tettis">John Tettis</a>. Credit to <a href="https://www.linkedin.com/in/mikehemberger/">Mike Hemberger</a> for the awesome button design! </p>
+    </div>
+  </footer>
 
   <script src="connect4.js"></script>
 <script src="bot.js"></script>

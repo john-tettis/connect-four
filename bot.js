@@ -1,4 +1,11 @@
 //bot idea for fun
+let bot =false;
+function toggleBot(){
+    const radio =document.querySelector('#radio-one');
+   return radio.checked;
+}
+
+
 function botTurn([y1,x1]){
 function _nextMove(){
     let [lose, lMove] = checkForCloseWin('p1');
