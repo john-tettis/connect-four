@@ -100,12 +100,12 @@ h1 {
 
 .p1 {
   background-color: red;
-  background-image: url(./Images/redPiece.png);
+  background-image: url(/Images/redPiece.png);
 }
 
 .p2 {
   background-color: blue;
-  background-image: url(./Images/bluePiece.png);
+  background-image: url(/Images/bluePiece.png);
   background-position: 10% 10%;
 }
 
@@ -332,15 +332,15 @@ a {
 
 @media only screen and (max-device-width: 500px) {
   #board {
-    min-width: 500px;
+    min-width: 400px;
   }
   #board td {
-    width: 70px;
-    height: 70px;
+    width: 55px;
+    height: 52px;
   }
   .piece {
-    width: 97px;
-    height: 97px;
+    width: 54px;
+    height: 54px;
   }
 }
 /*# sourceMappingURL=connect4.css.map */

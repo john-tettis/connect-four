@@ -271,14 +271,14 @@ a{
 @media only screen and (max-device-width: 500px){
     
     #board{
-        min-width:500px;
+        min-width:400px;
         td {
-            width: 70px;
-            height: 70px;
+            width: 55px;
+            height: 52px;
         }
     } 
     .piece{
-        width:97px;
-        height:97px;
+        width:54px;
+        height:54px;
     }
 }
