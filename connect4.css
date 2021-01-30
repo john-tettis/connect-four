@@ -331,15 +331,12 @@ a {
 }
 
 @media only screen and (max-device-width: 500px) {
-  body {
-    background-color: red;
-  }
   #board {
-    min-width: 720px;
+    min-width: 500px;
   }
   #board td {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
   }
   .piece {
     width: 97px;
