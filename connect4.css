@@ -332,11 +332,11 @@ a {
 
 @media only screen and (max-device-width: 500px) {
   #board {
-    min-width: 500px;
+    min-width: 400px;
   }
   #board td {
-    width: 70px;
-    height: 70px;
+    width: ;
+    height: ;
   }
   .piece {
     width: 97px;
