@@ -42,6 +42,7 @@ h1 {
 }
 
 #board {
+  table-layout: fixed;
   min-width: 421px;
   padding: 5px;
 }
@@ -303,7 +304,7 @@ h2 {
 
 footer {
   z-index: -1;
-  width: 100%;
+  width: 100vw;
   height: 100px;
   background-color: #021129;
   position: relative;
@@ -329,20 +330,4 @@ footer div p {
 a {
   color: #3278b9;
 }
-/*
-@media only screen and (max-device-width: 500px) {
-  #board {
-    min-width: 400px;
-  }
-  #board td {
-    width: 55px;
-    height: 52px;
-  }
-  .piece {
-    width: 54px;
-    height: 54px;
-  }
-}
-*/
-
 /*# sourceMappingURL=connect4.css.map */
